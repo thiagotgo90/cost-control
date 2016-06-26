@@ -8,7 +8,7 @@
 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
-		<class>org.tgo.expense.model.Expense</class>
+		<class>org.tgo.domain.Expense</class>
 
 		<properties>
 

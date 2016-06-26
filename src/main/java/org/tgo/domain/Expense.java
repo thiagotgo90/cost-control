@@ -1,4 +1,4 @@
-package org.tgo.expense.model;
+package org.tgo.domain;
 
 import java.util.Date;
 
@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
@@ -13,6 +15,8 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "expense")
+@NamedQueries({
+        @NamedQuery(name = "Expense.getAll", query = "SELECT e FROM Expense e") })
 public class Expense {
 
     @Id
@@ -30,8 +34,7 @@ public class Expense {
     public Expense() {
     }
 
-    public Expense(String descricao, String local, double valor,
-            Date data) {
+    public Expense(String descricao, String local, double valor, Date data) {
         this.descricao = descricao;
         this.local = local;
         this.valor = valor;
