@@ -1,11 +1,15 @@
 package org.tgo.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -20,13 +24,20 @@ import javax.persistence.TemporalType;
 public class Expense {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "idGenerator")
-    @TableGenerator(name = "idGenerator", table = "id_table")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "expenseIdGenerator")
+    @TableGenerator(name = "expenseIdGenerator", table = "id_table")
     private int id;
 
     private String descricao;
     private String local;
     private double valor;
+
+    @ManyToMany
+    @JoinTable(
+            name = "expense_category", 
+            joinColumns = @JoinColumn(name = "expense"),
+            inverseJoinColumns=@JoinColumn(name="category"))
+    private List<Category> categories;
 
     @Temporal(TemporalType.DATE)
     private Date data;

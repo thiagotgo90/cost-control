@@ -17,7 +17,7 @@ public class ApplicationInitializer
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] { "/" };
+        return new String[] { "/expense" };
     }
 
 }

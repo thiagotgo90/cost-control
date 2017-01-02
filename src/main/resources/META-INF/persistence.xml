@@ -7,8 +7,6 @@
 	<persistence-unit name="costControl" transaction-type="RESOURCE_LOCAL">
 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		
-		<class>org.tgo.domain.Expense</class>
 
 		<properties>
 
@@ -24,5 +22,6 @@
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 
 		</properties>
+		
 	</persistence-unit>
 </persistence>
